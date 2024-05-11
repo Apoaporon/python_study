@@ -15,6 +15,7 @@ print(f"os.chdir()はlinux cdと同様のことができます==={os.getcwd()}")
 
 print(f"argv属性を利用してコマンドラインモジュールから受け取った引数をリストで格納することができます")
 print(f"sys.argv==={sys.argv}")
+print(f"sys.argv[x:x]で指定するとリストなのでスライスした要素を取得可能 0にはファイル名が入っている {sys.argv[1:4]}")
 
 # argvよりも効率的に引数を受け取って扱う方法
 parser = argparse.ArgumentParser() # パーサーオブジェクトの作成
