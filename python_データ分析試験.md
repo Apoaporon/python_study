@@ -14,3 +14,41 @@ $$
 
 ## numpy
 - Numpyの配列は1つのデータ型しか扱えない。intとfloatを同じ配列内に入れるとint->floatに変換される
+
+## dataframe
+- データフレームのインデックス属性、カラム属性は、df.index[0]という指定方法はできず、変更する際は一度に変換する必要がある
+
+```python
+df.index[0] = ['1行目'] # これはエラーになる
+df.index = ['1行目', '2行目'] # このように一括変換
+df.rename(index={'1行目': '01'}, columns={'A列': 'a'}) # renameメソッドを活用する
+```
+
+- read_htmlはtable属性をdataframeとして読み込む
+
+- groupby
+    - groupby関数はデータを「分割→適用→結合」する関数です
+    - Grouperオブジェクトを引数にすることで周期を指定できます←指定してないとエラー？
+
+## matplotlib
+- subplots
+    - subplots(2):上下に描画スペースが作成される
+    - subplots(2,2): 2*2の描画スペースが作成
+    - subplots(1,2) or subplots(2, ncols=2):左右に描画スペースが作成
+- subplot関数でも上記と同様のことが可能
+    - subplot(121), (122):(行、列、位置)を指定している(0スタートではなく1スタートであることに注意)
+
+## scikit-learn
+- カテゴリ変数エンコーディング
+    - 「北海道」「東京」「沖縄」というデータがあった場合、scikit-learnのLabelEncoderクラスでカテゴリ変数エンコーディングすると、「0」「1」「2」
+- OneHotエンコーディング
+    - 値の分だけ列を増やし、各行の該当する値の列に1、それ以外の列に0が入力されます。
+- pandas get_dummies関数はDataFrameが返るが、scikit-learnのOneHotEncoderは疎行列がが返り、1の場所のみを記憶するのでメモリ消費を抑えられる。
+
+- SVM
+    - liner:データを直線で分類
+    - rbf(radial basis function):放射基底関数、直線、曲線で分類可能
+    - Cの値：小さくすると柔軟性が持てるが、誤判定が増える。大きくすると、厳密性が出るが、訓練データに過剰適合してしまう
+
+- 主成分分析
+    - 教師なし学習に分類されるもの
